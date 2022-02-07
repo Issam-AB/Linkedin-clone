@@ -73,5 +73,3 @@ const home = () => {
 };
 
 export default home;
-
-test;
