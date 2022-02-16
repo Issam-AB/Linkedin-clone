@@ -9,7 +9,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <button onClick={signOut}>Sign Out</button>
+      <button onClick={signOut()}>Sign Out</button>
     </div>
   );
 }
