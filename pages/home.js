@@ -71,7 +71,7 @@ const home = ({ providers }) => {
             </div>
           </div>
         </div>
-        <div className="relative xl:absolute w-80 h-100 xl:w-[650px] xl:h-[650px] right-5 top-4">
+        <div className="relative xl:absolute w-80 h-80 xl:w-[650px] xl:h-[650px] right-5 top-14">
           <Image
             src="https://rb.gy/vkzpzt"
             layout="fill"
