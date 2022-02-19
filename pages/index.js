@@ -4,7 +4,7 @@ import { Header } from "../components";
 
 export default function Home() {
   return (
-    <div>
+    <div className="bg-gray-800">
       <Head>
         <title>Linkedin</title>
         <link rel="icon" href="/favicon.ico" />
