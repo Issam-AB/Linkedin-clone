@@ -24,7 +24,8 @@ const Header = () => {
 
   //after mounting, we have access to theme
   useEffect(() => setMounted(true), []);
-  console.log("dark mode", theme);
+  //   console.log("dark mode", theme);
+
   return (
     <div className="sticky top-0 z-40 bg-white dark:bg-[#1D2226] flex items-center justify-around py-1.5 px-3 focus-within:shadow-lg">
       {/* left  */}
@@ -62,8 +63,11 @@ const Header = () => {
         {mounted && (
           <div
             className={`bg-gray-600 flex items-center px-O.5 rounded-full h-6 w-12 cursor-pointer shrink-0 relative ${
-              resolvedTheme === "dark" ? "justify-start" : "justify-end"
+              resolvedTheme === "dark" ? "justify-end" : "justify-start"
             }`}
+            onClick={() =>
+              setTheme(resolvedTheme === "dark" ? "light" : "dark")
+            }
           >
             <span className="absolute left-0">🌜</span>
             <motion.div
@@ -71,7 +75,7 @@ const Header = () => {
               layout
               transition={spring}
             />
-            <span className="absolute right-0">🌤</span>
+            <span className="absolute right-0">🌞</span>
           </div>
         )}
       </div>

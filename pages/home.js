@@ -40,7 +40,7 @@ const home = ({ providers }) => {
             <div key={provider.name}>
               <div className="pl-4">
                 <button
-                  className="text-blue-700 font-semibold rounded-full border border-blue-700 px-5 py-1.5 transition-all hover:border-2"
+                  className="text-blue-700 font-semibold rounded-full border border-blue-700 px-5 py-1.5 transition-all hover:border-2 shadow-lg shadow-blue-500/50"
                   onClick={() => signIn(provider.id, { callbackUrl: "/" })}
                 >
                   Sign in
