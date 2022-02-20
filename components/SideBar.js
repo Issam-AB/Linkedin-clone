@@ -3,8 +3,18 @@ import Image from "next/image";
 import React from "react";
 import BookmarkOutlinedIcon from "@mui/icons-material/BookmarkOutlined";
 import { AddRounded as AddRoundedIcon } from "@mui/icons-material";
+import { useSession } from "next-auth/react";
+import { useRouter } from "next/router";
 
 const SideBar = () => {
+  const router = useRouter();
+  const { status } = useSession({
+    required: true,
+    onUnauthenticated() {
+      // The user is not authenticated, handle it here.
+      router.push("/home");
+    },
+  });
   return (
     <div className="space-y-2 min-w-max max-w-lg">
       {/* Top */}
@@ -14,17 +24,16 @@ const SideBar = () => {
         </div>
         <Avatar
           //   onClick={signOut}
-          //   src={session?.user?.image}
-          src="https://cdn.futura-sciences.com/buildsv6/images/profilehero/d/9/a/d9a1058910_50163142_elon-musk1.jpg"
+          src={session?.user?.image}
           className="!h-14 !w-14 !border-2 !absolute !top-4 !cursor-pointer"
         />
 
         <div className="mt-5 py-4 space-x-0.5">
           <h4 className="hover:underline decoration-purple-700 underline-offset-1 cursor-pointer">
-            Elon Musk
+            {session?.user?.name}
           </h4>
           <p className="text-black/60 dark:text-white/75 text-sm">
-            elonmusk@gmail.com
+            {session?.user?.email}
           </p>
         </div>
 
