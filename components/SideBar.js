@@ -3,18 +3,10 @@ import Image from "next/image";
 import React from "react";
 import BookmarkOutlinedIcon from "@mui/icons-material/BookmarkOutlined";
 import { AddRounded as AddRoundedIcon } from "@mui/icons-material";
-import { useSession } from "next-auth/react";
-import { useRouter } from "next/router";
+import { signOut, useSession } from "next-auth/react";
 
 const SideBar = () => {
-  const router = useRouter();
-  const { status } = useSession({
-    required: true,
-    onUnauthenticated() {
-      // The user is not authenticated, handle it here.
-      router.push("/home");
-    },
-  });
+  const { data: session } = useSession();
   return (
     <div className="space-y-2 min-w-max max-w-lg">
       {/* Top */}
@@ -23,7 +15,7 @@ const SideBar = () => {
           <Image src="https://rb.gy/i26zak" layout="fill" alt="" priority />
         </div>
         <Avatar
-          //   onClick={signOut}
+          onClick={signOut}
           src={session?.user?.image}
           className="!h-14 !w-14 !border-2 !absolute !top-4 !cursor-pointer"
         />

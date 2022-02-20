@@ -1,10 +1,18 @@
 import { getSession, signOut, useSession } from "next-auth/react";
 import Head from "next/head";
+import { useRouter } from "next/router";
 import { Header, SideBar } from "../components";
 
 export default function Home() {
-  const { data: session } = useSession();
-  console.log("session is ", session);
+  const router = useRouter();
+  //check if the user is authenticated om the client...
+  const { status } = useSession({
+    required: true,
+    onUnauthenticated() {
+      // The user is not authenticated, handle it here.
+      router.push("/home");
+    },
+  });
   return (
     <div className="bg-[#F3F2EF] dark:bg-black dark:text-white h-screen overflow-y-scroll md:space-y-6">
       <Head>
