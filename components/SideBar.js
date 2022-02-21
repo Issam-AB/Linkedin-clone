@@ -29,7 +29,7 @@ const SideBar = () => {
           </p>
         </div>
 
-        <div className="hidden md:inline text-left text-white/75 text-sm">
+        <div className="hidden md:inline text-left dark:text-white/75 text-sm">
           <div className="font-medium sidBarButton space-y-0.5">
             <div className="flex justify-between items-center space-x-2">
               <h4>Who viewed your profile</h4>

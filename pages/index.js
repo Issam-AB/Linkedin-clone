@@ -1,7 +1,7 @@
 import { getSession, signOut, useSession } from "next-auth/react";
 import Head from "next/head";
 import { useRouter } from "next/router";
-import { Header, SideBar } from "../components";
+import { Header, SideBar, Feed } from "../components";
 
 export default function Home() {
   const router = useRouter();
@@ -27,6 +27,7 @@ export default function Home() {
           {/* Sidebar */}
           <SideBar />
           {/* Feed */}
+          <Feed />
         </div>
 
         {/* Widgets */}
