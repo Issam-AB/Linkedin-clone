@@ -21,7 +21,7 @@ export default async function handler(req, res) {
 
   if (method === "POST") {
     try {
-      const post = await dn
+      const post = await db
         .collection("posts")
         .insertOne({ ...body, timestamp: new Timestamp() });
       res.status(201).json(post);
