@@ -16,7 +16,7 @@ const Form = () => {
       body: JSON.stringify({
         input: input,
         photoUrl: photoUrl,
-        username: session.user.username,
+        username: session.user.name,
         email: session.user.email,
         userImg: session.user.image,
         createdAt: new Date().toString(),
