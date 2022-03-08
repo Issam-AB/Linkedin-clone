@@ -6,9 +6,14 @@ import {
   CloseRounded as CloseRoundedIcon,
   MoreHorizRounded as MoreHorizRoundedIcon,
 } from "@mui/icons-material";
+import { useRecoilState } from "recoil";
+import { modalState, modalTypeState } from "../atoms/modalAtom";
+import { getPostState } from "../atoms/postAtom";
 
 const Post = ({ post, modalPost }) => {
-  const [modalOpen, setModalOpen] = useState(false);
+  const [modalOpen, setModalOpen] = useRecoilState(modalState);
+  const [modalType, setModalType] = useRecoilState(modalTypeState);
+  const [postState, setPostState] = useRecoilState(getPostState);
   const [showInput, setShowInput] = useState(false);
 
   const truncate = (string, n) =>
@@ -30,7 +35,7 @@ const Post = ({ post, modalPost }) => {
           {/* timeago stamp */}
         </div>
         {modalPost ? (
-          <IconButton onClick={setModalOpen(true)}>
+          <IconButton onClick={() => setModalOpen(false)}>
             <CloseRoundedIcon className="dark:text-white/75 h-7 w-7" />
           </IconButton>
         ) : (
@@ -54,7 +59,16 @@ const Post = ({ post, modalPost }) => {
 
       {post.photoUrl && !modalPost && (
         // eslint-disable-next-line @next/next/no-img-element
-        <img src={post.photoUrl} alt="" className="w-full cursor-pointer" />
+        <img
+          src={post.photoUrl}
+          alt=""
+          className="w-full cursor-pointer"
+          onClick={() => {
+            setModalOpen(true);
+            setModalType("gifYouUp");
+            setPostState(post);
+          }}
+        />
       )}
     </div>
   );
