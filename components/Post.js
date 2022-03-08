@@ -1,6 +1,7 @@
 import { Avatar } from "@mui/material";
 import React, { useState } from "react";
 import { IconButton } from "@mui/material";
+import Image from "next/image";
 import {
   CloseRounded as CloseRoundedIcon,
   MoreHorizRounded as MoreHorizRoundedIcon,
@@ -10,9 +11,8 @@ const Post = ({ post, modalPost }) => {
   const [modalOpen, setModalOpen] = useState(false);
   const [showInput, setShowInput] = useState(false);
 
-  // const truncate = (string, n) => {
-  //   string?.length > n ? string.substr(0, n - 1) + "... se more" : string;
-  // };
+  const truncate = (string, n) =>
+    string?.length > n ? string.substr(0, n - 1) + "... se more" : string;
 
   return (
     <div
@@ -39,14 +39,22 @@ const Post = ({ post, modalPost }) => {
           </IconButton>
         )}
       </div>
+
       {post.input && (
-        <div className="px-2.5 break-all md:breal-normal">
+        <div className="px-2.5 break-all md:break-normal ">
           {modalPost || showInput ? (
-            <p>{post.input}</p>
+            <p onClick={() => setShowInput(false)}>{post.input}</p>
           ) : (
-            <p>{truncate(post.input, 150)}</p>
+            <p onClick={() => setShowInput(true)}>
+              {truncate(post.input, 150)}
+            </p>
           )}
         </div>
+      )}
+
+      {post.photoUrl && !modalPost && (
+        // eslint-disable-next-line @next/next/no-img-element
+        <img src={post.photoUrl} alt="" className="w-full cursor-pointer" />
       )}
     </div>
   );
