@@ -8,7 +8,7 @@ import { Header, SideBar, Feed, Modal } from "../components";
 import { connectToDatabase } from "../util/mongodb";
 
 export default function Home({ posts }) {
-  console.log(posts);
+  // console.log(posts);
   const router = useRouter();
   const [modalOpen, setModalOpen] = useRecoilState(modalState);
   const [modalType, setModalType] = useRecoilState(modalTypeState);
@@ -23,7 +23,7 @@ export default function Home({ posts }) {
   });
 
   return (
-    <div className="bg-[#F3F2EF] dark:bg-black dark:text-white h-screen overflow-y-scroll md:space-y-6">
+    <div className="bg-[#F3F2EF] dark:bg-[rgb(4,17,26)] dark:text-white h-screen overflow-y-scroll md:space-y-6">
       <Head>
         <title>Feed | Linkedin</title>
         <link rel="icon" href="/favicon.ico" />
@@ -36,7 +36,7 @@ export default function Home({ posts }) {
           {/* Sidebar */}
           <SideBar />
           {/* Feed */}
-          <Feed />
+          <Feed posts={posts} />
         </div>
 
         {/* Widgets */}
