@@ -30,7 +30,7 @@ const Post = ({ post, modalPost }) => {
     string?.length > n ? string.substr(0, n - 1) + "... se more" : string;
 
   const deletePost = async () => {
-    const response = await fetch(`/api/posts${post._id}`, {
+    const response = await fetch(`/api/posts/${post._id}`, {
       method: "DELETE",
       headers: { "Content-Type": "application/json" },
     });
