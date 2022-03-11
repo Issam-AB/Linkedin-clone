@@ -15,7 +15,11 @@ const SideBar = () => {
           <Image src="https://rb.gy/i26zak" layout="fill" alt="" priority />
         </div>
         <Avatar
-          onClick={signOut}
+          onClick={() =>
+            signOut({
+              callbackUrl: `/home`,
+            })
+          }
           src={session?.user?.image}
           className="!h-14 !w-14 !border-2 !absolute !top-4 !cursor-pointer"
         />
