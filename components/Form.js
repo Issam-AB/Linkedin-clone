@@ -9,7 +9,7 @@ const Form = () => {
   const [photoUrl, setPhotoUrl] = useState("");
   const { data: session } = useSession();
   const [modalOpen, setModalOpen] = useRecoilState(modalState);
-  const [handlePost, setHandlePost] = useState(handlePostState);
+  const [handlePost, setHandlePost] = useRecoilState(handlePostState);
 
   const upoloadPost = async (e) => {
     e.preventDefault();
