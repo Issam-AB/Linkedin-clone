@@ -8,7 +8,7 @@ import { Header, SideBar, Feed, Modal, Widgets } from "../components";
 import { connectToDatabase } from "../util/mongodb";
 
 export default function Home({ posts, articles }) {
-  console.log(articles);
+  // console.log(articles);
   const router = useRouter();
   const [modalOpen, setModalOpen] = useRecoilState(modalState);
   const [modalType, setModalType] = useRecoilState(modalTypeState);
