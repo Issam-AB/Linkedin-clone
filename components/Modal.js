@@ -99,7 +99,7 @@ const Modal = ({ handleClose, type }) => {
             alt=""
             onDoubleClick={handleClose}
             src={post.photoUrl}
-            className="object-fill max-h-[80vh] w-full max-w-3xl rounded-l-lg"
+            className="object-contain max-h-[80vh] w-full max-w-3xl rounded-l-lg"
           />
           <div className="w-full md:w-3/5 bg-white dark:bg-[#1D2226] rounded-r-lg">
             <Post post={post} modalPost />

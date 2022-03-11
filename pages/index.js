@@ -4,11 +4,11 @@ import Head from "next/head";
 import { useRouter } from "next/router";
 import { useRecoilState } from "recoil";
 import { modalState, modalTypeState } from "../atoms/modalAtom";
-import { Header, SideBar, Feed, Modal } from "../components";
+import { Header, SideBar, Feed, Modal, Widgets } from "../components";
 import { connectToDatabase } from "../util/mongodb";
 
-export default function Home({ posts }) {
-  // console.log(posts);
+export default function Home({ posts, articles }) {
+  console.log(articles);
   const router = useRouter();
   const [modalOpen, setModalOpen] = useRecoilState(modalState);
   const [modalType, setModalType] = useRecoilState(modalTypeState);
@@ -40,6 +40,8 @@ export default function Home({ posts }) {
         </div>
 
         {/* Widgets */}
+        <Widgets articles={articles} />
+
         <AnimatePresence>
           {modalOpen && (
             <Modal handleClose={() => setModalOpen(false)} type={modalType} />
@@ -70,9 +72,15 @@ export async function getServerSideProps(context) {
     .sort({ timestamp: -1 })
     .toArray();
 
+  // get new articles
+  const results = await fetch(
+    `https://newsapi.org/v2/top-headlines?country=us&apiKey=${process.env.NEWS_API_KEY}`
+  ).then((res) => res.json());
+
   return {
     props: {
       session,
+      articles: results.articles,
       posts: posts.map((post) => ({
         _id: post._id.toString(),
         input: post.input,
