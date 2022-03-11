@@ -29,6 +29,16 @@ const Post = ({ post, modalPost }) => {
   const truncate = (string, n) =>
     string?.length > n ? string.substr(0, n - 1) + "... se more" : string;
 
+  const deletePost = async () => {
+    const response = await fetch(`/api/posts${post._id}`, {
+      method: "DELETE",
+      headers: { "Content-Type": "application/json" },
+    });
+
+    setHandlePost(true);
+    setModalOpen(false);
+  };
+
   return (
     <div
       className={`bg-white dark:bg-[#1D2226] ${
